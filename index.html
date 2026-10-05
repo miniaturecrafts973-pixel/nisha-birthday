@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hey Nisha ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+  background:radial-gradient(circle at top,#702080,#26052f 45%,#09000d);
+}
+
+/* STARS */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.7;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.2}
+  to{opacity:1;transform:scale(1.4)}
+}
+
+/* MAIN */
+.container{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  padding:60px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+h1{
+  font-size:42px;
+  text-shadow:0 0 20px #ff5cda;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  opacity:.85;
+  margin-bottom:45px;
+}
+
+/* GIFT */
+.gift-area{
+  perspective:900px;
+  margin-bottom:30px;
+}
+
+.gift{
+  position:relative;
+  width:170px;
+  height:150px;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotateY(-5deg)}
+  50%{transform:translateY(-15px) rotateY(5deg)}
+}
+
+.box{
+  position:absolute;
+  bottom:0;
+  width:170px;
+  height:115px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#ff4fc8,#9b24d0);
+  box-shadow:0 15px 40px rgba(255,0,200,.4);
+}
+
+.box:before{
+  content:"";
+  position:absolute;
+  left:72px;
+  width:25px;
+  height:115px;
+  background:#ffd34d;
+}
+
+.lid{
+  position:absolute;
+  top:25px;
+  left:-10px;
+  width:190px;
+  height:35px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#ff65d4,#b42bdf);
+}
+
+.lid:before{
+  content:"";
+  position:absolute;
+  left:82px;
+  width:25px;
+  height:35px;
+  background:#ffd34d;
+}
+
+/* BUTTON */
+button{
+  border:none;
+  padding:15px 28px;
+  border-radius:40px;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(90deg,#ff3cac,#784ba0);
+  box-shadow:0 0 25px rgba(255,60,200,.5);
+  transition:.3s;
+}
+
+button:active{
+  transform:scale(.94);
+}
+
+.nextBtn{
+  margin-top:20px;
+}
+
+/* SURPRISE */
+#surprise{
+  display:none;
+  width:100%;
+  max-width:600px;
+  animation:appear .8s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* PHOTO */
+.photoBox{
+  margin-top:30px;
+  padding:15px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.2);
+}
+
+.photoBox img{
+  width:100%;
+  max-height:520px;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+  box-shadow:0 10px 35px rgba(0,0,0,.5);
+}
+
+.photoTitle{
+  margin:15px 0 5px;
+  font-size:20px;
+  color:#ff9ee5;
+}
+
+/* FINAL */
+#finalMessage{
+  display:none;
+  margin-top:30px;
+  padding:25px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+}
+
+#finalMessage h2{
+  color:#ff83dc;
+  margin-bottom:15px;
+}
+
+#finalMessage p{
+  line-height:1.7;
+}
+
+/* COUNTDOWN */
+.countdownTitle{
+  margin-top:30px;
+  color:#ff9ee5;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.time{
+  min-width:65px;
+  padding:12px 8px;
+  border-radius:15px;
+  background:rgba(255,255,255,.09);
+}
+
+.time span{
+  display:block;
+  font-size:24px;
+  font-weight:bold;
+}
+
+.time small{
+  opacity:.7;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-30px;
+  font-size:23px;
+  z-index:20;
+  pointer-events:none;
+  animation:heartUp 4s linear forwards;
+}
+
+@keyframes heartUp{
+  from{
+    transform:translateY(0) scale(.7);
+    opacity:0;
+  }
+  15%{opacity:1}
+  to{
+    transform:translateY(-110vh) scale(1.5);
+    opacity:0;
+  }
+}
+
+@media(max-width:500px){
+  h1{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+
+<div class="container">
+
+<h1>Hey Nisha ❤️</h1>
+
+<div class="subtitle">
+I made something special for you ✨
+</div>
+
+<!-- GIFT -->
+<div class="gift-area">
+  <div class="gift">
+    <div class="lid"></div>
+    <div class="box"></div>
+  </div>
+</div>
+
+<button id="openBtn" onclick="openSurprise()">
+OPEN YOUR SURPRISE ✨
+</button>
+
+
+<!-- SURPRISE -->
+<div id="surprise">
+
+  <!-- PHOTO AREA -->
+  <div class="photoBox">
+
+    <div class="photoTitle" id="photoTitle">
+      A little memory ❤️
+    </div>
+
+    <img id="mainPhoto" src="nisha1.jpg">
+
+    <button class="nextBtn" id="nextBtn" onclick="nextPhoto()">
+      NEXT ❤️
+    </button>
+
+  </div>
+
+
+  <!-- FINAL MESSAGE -->
+  <div id="finalMessage">
+
+    <h2>🎂 Advance Happy Birthday Nisha ❤️</h2>
+
+    <p>
+      Your special day is coming soon ✨
+      <br><br>
+
+      So why wait till the birthday?
+      Let's start the celebration a little early. 💖
+
+      <br><br>
+
+      May your smile always stay beautiful,
+      and may your coming year be filled with
+      happiness, success and beautiful memories. 🌸
+    </p>
+
+
+    <div class="countdownTitle">
+      ⏳ Countdown to 30 October 🎂
+    </div>
+
+    <div class="countdown">
+
+      <div class="time">
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+
+      <div class="time">
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+
+      <div class="time">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+
+      <div class="time">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* STARS */
+const stars = document.getElementById("stars");
+
+for(let i=0;i<90;i++){
+
+  const star=document.createElement("div");
+
+  star.className="star";
+
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+
+  star.style.animationDelay=Math.random()*2+"s";
+
+  stars.appendChild(star);
+}
+
+
+/* PHOTO SYSTEM */
+
+const photos=[
+  "nisha1.jpg",
+  "nisha2.jpg",
+  "nisha3.jpg"
+];
+
+const titles=[
+  "A little memory ❤️",
+  "Another beautiful moment 💖",
+  "And one more special memory ✨"
+];
+
+let currentPhoto=0;
+
+
+/* OPEN SURPRISE */
+
+function openSurprise(){
+
+  const music=document.getElementById("bgMusic");
+
+  /* MUSIC STARTS FROM BUTTON CLICK */
+  music.volume=1.0;
+
+  music.currentTime=0;
+
+  music.play().catch(function(error){
+    console.log("Music error:",error);
+  });
+
+
+  document.getElementById("surprise").style.display="block";
+
+  document.getElementById("openBtn").style.display="none";
+
+
+  createHearts();
+
+
+  setTimeout(function(){
+
+    document.getElementById("surprise").scrollIntoView({
+      behavior:"smooth"
+    });
+
+  },300);
+}
+
+
+/* NEXT PHOTO */
+
+function nextPhoto(){
+
+  currentPhoto++;
+
+  if(currentPhoto < photos.length){
+
+    const image=document.getElementById("mainPhoto");
+
+    image.style.opacity="0";
+    image.style.transform="scale(.9)";
+
+    setTimeout(function(){
+
+      image.src=photos[currentPhoto];
+
+      document.getElementById("photoTitle").innerText=
+        titles[currentPhoto];
+
+      image.style.opacity="1";
+      image.style.transform="scale(1)";
+
+    },300);
+
+  }
+
+
+  /* AFTER PHOTO 3 */
+  if(currentPhoto === photos.length-1){
+
+    document.getElementById("nextBtn").innerText=
+      "FINAL SURPRISE ✨";
+
+  }
+
+  if(currentPhoto >= photos.length){
+
+    document.getElementById("finalMessage").style.display="block";
+
+    document.getElementById("nextBtn").style.display="none";
+
+    document.getElementById("finalMessage").scrollIntoView({
+      behavior:"smooth"
+    });
+
+    createHearts();
+
+  }
+
+}
+
+
+/* HEARTS */
+
+function createHearts(){
+
+  for(let i=0;i<18;i++){
+
+    setTimeout(function(){
+
+      const heart=document.createElement("div");
+
+      heart.className="heart";
+
+      heart.innerHTML=
+        ["❤️","💖","💕","💗","✨"][Math.floor(Math.random()*5)];
+
+      heart.style.left=
+        Math.random()*100+"%";
+
+      heart.style.animationDuration=
+        (3+Math.random()*3)+"s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(function(){
+        heart.remove();
+      },6000);
+
+    },i*100);
+
+  }
+
+}
+
+
+/* COUNTDOWN */
+
+function updateCountdown(){
+
+  const now=new Date();
+
+  let year=now.getFullYear();
+
+  let birthday=new Date(year,9,30,0,0,0);
+
+  if(now>birthday){
+    birthday=new Date(year+1,9,30,0,0,0);
+  }
+
+  const difference=birthday-now;
+
+  const days=Math.floor(
+    difference/(1000*60*60*24)
+  );
+
+  const hours=Math.floor(
+    (difference/(1000*60*60))%24
+  );
+
+  const minutes=Math.floor(
+    (difference/(1000*60))%60
+  );
+
+  const seconds=Math.floor(
+    (difference/1000)%60
+  );
+
+
+  document.getElementById("days").innerText=
+    String(days).padStart(2,"0");
+
+  document.getElementById("hours").innerText=
+    String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").innerText=
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").innerText=
+    String(seconds).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+</script>
+
+</body>
+</html>>>
+
